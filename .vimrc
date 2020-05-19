@@ -55,5 +55,7 @@ endif
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
 
+set tabstop=4
+set shiftwidth=4
+
 au BufNewFile,BufRead *snake* set syntax=snakemake
-au BufNewFile,BufRead Snakefile set syntax=snakemake
