@@ -1,0 +1,6 @@
+de			hunspell/de_DE
+de_medical	hunspell/de_med
+de_nds		https://www.ndr.de/kultur/norddeutsche_sprache/plattdeutsch/woerterbuch101_abc-A.html
+en_us		hunspell/en_US
+en_medical	https://github.com/glutanimate/wordlist-medicalterms-en
+

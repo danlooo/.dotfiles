@@ -61,9 +61,12 @@ let g:hexmode_patterns = '*.bin,*.exe,*.o'
 
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
+highlight SpellBad cterm=underline ctermfg=Red ctermbg=None
 
 set tabstop=4
 set shiftwidth=4
 
-au BufNewFile,BufRead *snake* set syntax=snakemake
+set spell
+set spelllang=en_us,en_medical,de,de_medical,de_nds
 
+au BufNewFile,BufRead *snake* set syntax=snakemake
