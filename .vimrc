@@ -22,6 +22,9 @@ NeoBundle 'LukeGoodsell/nextflow-vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'preservim/nerdtree'
 NeoBundle 'sonph/onehalf'
+NeoBundle 'joshdick/onedark.vim'
+NeoBundle 'bioSyntax/bioSyntax-vim'
+NeoBundle 'fidian/hexmode'
 call neobundle#end()
 
 " Required:
@@ -37,7 +40,9 @@ set laststatus=2
 if !has('gui_running')
   set t_Co=256
 endif
-
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
 " NERDtree
 " start NERDtree if no file was specified
@@ -52,6 +57,8 @@ if !has('nvim')
     set cursorline
 endif
 
+let g:hexmode_patterns = '*.bin,*.exe,*.o'
+
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
 
@@ -59,3 +66,4 @@ set tabstop=4
 set shiftwidth=4
 
 au BufNewFile,BufRead *snake* set syntax=snakemake
+
