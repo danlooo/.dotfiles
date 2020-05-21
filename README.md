@@ -1,12 +1,16 @@
-# dotfiles
+# .dotfiles <img src='.logo.png' align="right" height="138.5" />
 Linux config
 
-## Tools
+## Get startedd
+Just clone this repository to your home directory: `git clone https://github.com/danlooo/dotfiles.git ~`. Start vim to let it download all the plugins.
 
-### Bash
+## Dependencies
+- [fortune](https://wiki.debian.org/fortune)
+
+## Bash
 - Greeting: Current date and fortune
 
-### vim
+## vim
 - Syntax highlighting
 	- [Biosyntax](https://biosyntax.org/)
 	- [Nextflow](https://github.com/LukeGoodsell/nextflow-vim)
@@ -14,6 +18,10 @@ Linux config
 - Color schemes
 	- [onehalf](https://github.com/sonph/onehalf)
 	- [onedark](https://github.com/joshdick/onedark.vim)
+- Code formatting
+	- Code formatting: [neoformat](https://github.com/sbdchd/neoformat)
+	- Closing brackets: [autopairs](https://github.com/jiangmiao/auto-pairs)
+	- Code foldimg: [SimpylFold](https://github.com/tmhedberg/SimpylFold)
 - Misc plugins
 	- [Lightline](https://github.com/itchyny/lightline.vim)
 	- [Neobundle](https://github.com/Shougo/neobundle.vim)
@@ -23,5 +31,5 @@ Linux config
 	- Regional dialects: [de_NDS](https://www.ndr.de/kultur/norddeutsche_sprache/plattdeutsch/woerterbuch101_abc-A.html)
 	- Medical dictionaries: [en_medical](https://github.com/glutanimate/wordlist-medicalterms-en), [de_medical](http://hunspell.github.io/)
 
-### htop
+## htop
 - Color scheme: Broken Gray

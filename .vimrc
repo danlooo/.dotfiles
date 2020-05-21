@@ -25,6 +25,9 @@ NeoBundle 'sonph/onehalf'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'bioSyntax/bioSyntax-vim'
 NeoBundle 'fidian/hexmode'
+NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'sbdchd/neoformat'
+NeoBundle 'tmhedberg/SimpylFold'
 call neobundle#end()
 
 " Required:
@@ -49,6 +52,11 @@ let g:lightline = {
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" Code folding
+nnoremap <ENTER> za
+set foldmethod=marker
+set foldmarker={,}
+
 " Syntax highlighting
 "BUG: does not work
 set number
@@ -70,4 +78,4 @@ set spell
 set spelllang=en_us,en_medical,de,de_medical,de_nds
 autocmd FileType fastq,fasta,sam setlocal nospell
 
-au BufNewFile,BufRead *snake* set syntax=snakemake
+autocmd BufNewFile,BufRead *snake* set syntax=snakemake
