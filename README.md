@@ -1,7 +1,7 @@
 # .dotfiles <img src='.logo.png' align="right" height="138.5" />
 Linux config
 
-## Get startedd
+## Get started
 Just clone this repository to your home directory: `git clone https://github.com/danlooo/dotfiles.git ~`. Start vim to let it download all the plugins.
 
 ## Dependencies
