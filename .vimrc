@@ -68,5 +68,6 @@ set shiftwidth=4
 
 set spell
 set spelllang=en_us,en_medical,de,de_medical,de_nds
+autocmd FileType fastq,fasta,sam setlocal nospell
 
 au BufNewFile,BufRead *snake* set syntax=snakemake
