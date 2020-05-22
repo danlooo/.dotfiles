@@ -21,15 +21,16 @@ Just clone this repository to your home directory: `git clone https://github.com
 - Code formatting
 	- Code formatting: [neoformat](https://github.com/sbdchd/neoformat)
 	- Closing brackets: [autopairs](https://github.com/jiangmiao/auto-pairs)
-	- Code foldimg: [SimpylFold](https://github.com/tmhedberg/SimpylFold)
-- Misc plugins
-	- [Lightline](https://github.com/itchyny/lightline.vim)
-	- [Neobundle](https://github.com/Shougo/neobundle.vim)
-	- [NERDTree](https://github.com/preservim/nerdtree)
+	- Code folding: [SimpylFold](https://github.com/tmhedberg/SimpylFold)
 - Spell check dictionaries
 	- Basic languages: [de_DE](http://hunspell.github.io/), [en_US](http://hunspell.github.io/)
 	- Regional dialects: [de_NDS](https://www.ndr.de/kultur/norddeutsche_sprache/plattdeutsch/woerterbuch101_abc-A.html)
 	- Medical dictionaries: [en_medical](https://github.com/glutanimate/wordlist-medicalterms-en), [de_medical](http://hunspell.github.io/)
+- Misc plugins
+	- [Lightline](https://github.com/itchyny/lightline.vim)
+	- [Neobundle](https://github.com/Shougo/neobundle.vim)
+	- [NERDTree](https://github.com/preservim/nerdtree)
+	- Git: [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
 ## htop
 - Color scheme: Broken Gray

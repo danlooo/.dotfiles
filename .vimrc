@@ -28,6 +28,8 @@ NeoBundle 'fidian/hexmode'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'sbdchd/neoformat'
 NeoBundle 'tmhedberg/SimpylFold'
+NeoBundle 'ryanoasis/vim-devicons'
+NeoBundle 'tpope/vim-fugitive'
 call neobundle#end()
 
 " Required:
@@ -51,6 +53,7 @@ let g:lightline = {
 " start NERDtree if no file was specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+highlight Directory guifg=#bbbbbb ctermfg=grey
 
 " Code folding
 nnoremap <ENTER> za
@@ -70,12 +73,32 @@ let g:hexmode_patterns = '*.bin,*.exe,*.o'
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
 highlight SpellBad cterm=underline ctermfg=Red ctermbg=None
+highlight Folded ctermbg=None ctermfg=Grey
 
 set tabstop=4
 set shiftwidth=4
+
+set encoding=UTF-8
+set mouse=a
 
 set spell
 set spelllang=en_us,en_medical,de,de_medical,de_nds
 autocmd FileType fastq,fasta,sam setlocal nospell
 
 autocmd BufNewFile,BufRead *snake* set syntax=snakemake
+
+"auto completion
+set dictionary+=/usr/share/dict/ngerman
+set complete+=k
+
+"Tab: Indent if we're at the beginning of a line. Else, do completion
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
