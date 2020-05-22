@@ -32,5 +32,12 @@ Just clone this repository to your home directory: `git clone https://github.com
 	- [NERDTree](https://github.com/preservim/nerdtree)
 	- Git: [vim-fugitive](https://github.com/tpope/vim-fugitive)
 
+## git
+- My User name and email
+- Default editor: vim
+- Simple aliases: e.g. `git a` to add, `git c` to commit, or `git l` to log
+- Aliases for searching git objects, e.g. `git fm` to find commits by message
+- URL shortcuts for [GitHub](https://github.com/) and [Gist](https://gist.github.com/)
+
 ## htop
 - Color scheme: Broken Gray
