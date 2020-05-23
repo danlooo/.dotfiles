@@ -23,13 +23,15 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'preservim/nerdtree'
 NeoBundle 'sonph/onehalf'
 NeoBundle 'joshdick/onedark.vim'
-NeoBundle 'bioSyntax/bioSyntax-vim'
+NeoBundle 'danlooo/bioSyntax-vim'
 NeoBundle 'fidian/hexmode'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'sbdchd/neoformat'
 NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ap/vim-css-color'
+NeoBundle 'tpope/vim-commentary'
 call neobundle#end()
 
 " Required:
@@ -49,6 +51,8 @@ let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
 
+colorscheme onedark
+
 " NERDtree
 " start NERDtree if no file was specified
 autocmd StdinReadPre * let s:std_in=1
@@ -62,25 +66,28 @@ set foldmarker={,}
 
 " Syntax highlighting
 "BUG: does not work
-set number
+set number relativenumber
 set colorcolumn=0
 if !has('nvim')
     set cursorline
 endif
 
-let g:hexmode_patterns = '*.bin,*.exe,*.o'
-
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
 highlight SpellBad cterm=underline ctermfg=Red ctermbg=None
 highlight Folded ctermbg=None ctermfg=Grey
+highlight Pmenu ctermbg=Grey
+
+let g:hexmode_patterns = '*.bin,*.exe,*.o'
 
 set tabstop=4
 set shiftwidth=4
 
 set encoding=UTF-8
 set mouse=a
+set hlsearch
 
+" spell check
 set spell
 set spelllang=en_us,en_medical,de,de_medical,de_nds
 autocmd FileType fastq,fasta,sam setlocal nospell
@@ -102,3 +109,8 @@ function! InsertTabWrapper()
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
