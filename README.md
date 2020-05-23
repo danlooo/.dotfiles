@@ -12,12 +12,11 @@ Just clone this repository to your home directory: `git clone https://github.com
 
 ## vim
 - Syntax highlighting
-	- [Biosyntax](https://biosyntax.org/)
 	- [Nextflow](https://github.com/LukeGoodsell/nextflow-vim)
 	- [hexmode](https://github.com/fidian/hexmode)
 - Color schemes
-	- [onehalf](https://github.com/sonph/onehalf)
 	- [onedark](https://github.com/joshdick/onedark.vim)
+	- [Biosyntax](https://github.com/danlooo/bioSyntax-vim)
 - Code formatting
 	- Code formatting: [neoformat](https://github.com/sbdchd/neoformat)
 	- Closing brackets: [autopairs](https://github.com/jiangmiao/auto-pairs)
@@ -31,6 +30,7 @@ Just clone this repository to your home directory: `git clone https://github.com
 	- [Neobundle](https://github.com/Shougo/neobundle.vim)
 	- [NERDTree](https://github.com/preservim/nerdtree)
 	- Git: [vim-fugitive](https://github.com/tpope/vim-fugitive)
+	- Comments: [vim-commentary](https://github.com/tpope/vim-commentary)
 
 ## git
 - My User name and email
