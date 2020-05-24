@@ -21,7 +21,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'LukeGoodsell/nextflow-vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'preservim/nerdtree'
-NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'danlooo/bioSyntax-vim'
 NeoBundle 'fidian/hexmode'
 NeoBundle 'jiangmiao/auto-pairs'
@@ -31,6 +30,8 @@ NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'tpope/vim-commentary'
+NeoBundle 'rakr/vim-one'
+NeoBundle 'dense-analysis/ale'
 call neobundle#end()
 
 " Required:
@@ -40,6 +41,10 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+" color scheme
+colorscheme one
+set background=dark
+
 " Lightline
 set noshowmode
 set laststatus=2
@@ -47,10 +52,18 @@ if !has('gui_running')
   set t_Co=256
 endif
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
+  \ 'colorscheme': 'one',
   \ }
 
-colorscheme onedark
+function! ToggleDarkModeOne()
+  let &background = ( &background == "dark"? "light" : "dark" )
+  if exists("g:lightline")
+    runtime autoload/lightline/colorscheme/one.vim
+    call lightline#colorscheme()
+  endif
+endfunction
+
+map <F12> :call ToggleDarkModeOne()<CR>
 
 " NERDtree
 " start NERDtree if no file was specified
@@ -64,18 +77,23 @@ set foldmethod=marker
 set foldmarker={,}
 
 " Syntax highlighting
-"BUG: does not work
+if (has("termguicolors"))
+  set termguicolors
+endif
 set number relativenumber
-set colorcolumn=0
+set colorcolumn=80
 if !has('nvim')
     set cursorline
 endif
 
 highlight LineNR cterm=none ctermfg=Grey ctermbg=none
 highlight CursorLineNR cterm=bold ctermfg=White ctermbg=none
-highlight SpellBad cterm=underline ctermfg=Red ctermbg=None
+highlight SpellBad cterm=underline ctermfg=Red guifg=#e06c75 ctermbg=None
 highlight Folded ctermbg=None ctermfg=Grey
 highlight Pmenu ctermbg=Grey
+
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
 
 let g:hexmode_patterns = '*.bin,*.exe,*.o'
 
@@ -89,7 +107,7 @@ set hlsearch
 " spell check
 set spell
 set spelllang=en_us,en_medical,de,de_medical,de_nds
-autocmd FileType fastq,fasta,sam setlocal nospell
+autocmd FileType fastq,fasta,sam,gtf setlocal nospell
 
 autocmd BufNewFile,BufRead *snake* set syntax=snakemake
 
@@ -106,10 +124,15 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
+
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-
+" Linting and fixing
+let g:ale_fixers = {
+	\ 'markdown': ['remove_trailing_lines', 'trim_whitespace'],
+	\ 'python': ['black', 'isort', 'trim_whitespace', 'remove_trailing_lines'],
+	\ 'r': ['styler', 'trim_whitespace', 'remove_trailing_lines']
+	\}
+let g:ale_lint_on_enter = 1
+let g:ale_fix_on_save = 1
