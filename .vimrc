@@ -112,7 +112,7 @@ autocmd FileType fastq,fasta,sam,gtf setlocal nospell
 autocmd BufNewFile,BufRead *snake* set syntax=snakemake
 
 "auto completion
-set dictionary+=/usr/share/dict/ngerman
+" set dictionary+=/usr/share/dict/ngerman
 set complete+=k
 
 "Tab: Indent if we're at the beginning of a line. Else, do completion
