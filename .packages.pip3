@@ -1,0 +1,5 @@
+#  List of essential pip packages
+
+powerline-shell
+black
+pylint

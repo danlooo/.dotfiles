@@ -2,7 +2,11 @@
 Linux config
 
 ## Get started
-Just clone this repository to your home directory: `git clone https://github.com/danlooo/dotfiles.git ~`. Start vim to let it download all the plugins.
+Just clone this repository to your home directory and run the install script:
+```
+git clone https://github.com/danlooo/dotfiles.git ~
+sudo bash .install.sh
+```
 
 ## Dependencies
 - [fortune](https://wiki.debian.org/fortune)
