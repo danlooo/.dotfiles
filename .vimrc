@@ -18,20 +18,48 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'LukeGoodsell/nextflow-vim'
+
+" UI
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'mgee/lightline-bufferline'
 NeoBundle 'preservim/nerdtree'
+
+" file types
+NeoBundle 'LukeGoodsell/nextflow-vim'
 NeoBundle 'danlooo/bioSyntax-vim'
 NeoBundle 'fidian/hexmode'
+NeoBundle 'chrisbra/csv.vim'
+
+" Misc
 NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'sbdchd/neoformat'
 NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ap/vim-css-color'
+
+" Syntax
 NeoBundle 'tpope/vim-commentary'
+
+" Coloring
 NeoBundle 'rakr/vim-one'
+NeoBundle 'ap/vim-css-color'
+
+" Frameworks
+NeoBundle 'roxma/nvim-yarp'
+NeoBundle 'roxma/vim-hug-neovim-rpc'
 NeoBundle 'dense-analysis/ale'
+
+" Auto completion
+NeoBundle 'ncm2/ncm2'
+NeoBundle 'ncm2/ncm2-path'
+NeoBundle 'ncm2/ncm2-bufword'
+NeoBundle 'ncm2/ncm2-syntax'
+NeoBundle 'jalvesaq/Nvim-R'
+NeoBundle 'gaalcaras/ncm-R'
+NeoBundle 'ncm2/ncm2-jedi'
+NeoBundle 'jalvesaq/Nvim-R'
+NeoBundle 'ncm2/ncm2-ultisnips'
+NeoBundle 'Shougo/neco-syntax'
+
 call neobundle#end()
 
 " Required:
@@ -51,13 +79,35 @@ set laststatus=2
 if !has('gui_running')
   set t_Co=256
 endif
+
 let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ }
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'colorscheme' : 'one',
+      \ 'tabline': {
+      \   'left': [['buffers']],
+      \   'right': [[ 'exit' ]],
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers',
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ },
+      \ }
+let g:lightline#bufferline#shorten_path = 1
 
 function! ToggleDarkModeOne()
   let &background = ( &background == "dark"? "light" : "dark" )
   if exists("g:lightline")
+	" BUG: This removes bad spell color coding
     runtime autoload/lightline/colorscheme/one.vim
     call lightline#colorscheme()
   endif
@@ -80,7 +130,7 @@ set foldmarker={,}
 if (has("termguicolors"))
   set termguicolors
 endif
-set number relativenumber
+set number
 set colorcolumn=80
 if !has('nvim')
     set cursorline
@@ -113,7 +163,13 @@ autocmd BufNewFile,BufRead *snake* set syntax=snakemake
 
 "auto completion
 " set dictionary+=/usr/share/dict/ngerman
-set complete+=k
+"set complete+=k
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" set completeopt to be what ncm2 expects
+set completeopt=noinsert,menuone,noselect
 
 "Tab: Indent if we're at the beginning of a line. Else, do completion
 function! InsertTabWrapper()
