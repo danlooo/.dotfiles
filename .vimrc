@@ -2,7 +2,7 @@
 if 0 | endif
 
 if &compatible
-  set nocompatible               " Be iMproved
+	set nocompatible               " Be iMproved
 endif
 
 " Required:
@@ -23,6 +23,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'mgee/lightline-bufferline'
 NeoBundle 'preservim/nerdtree'
+NeoBundle 'kassio/neoterm'
 
 " file types
 NeoBundle 'LukeGoodsell/nextflow-vim'
@@ -57,9 +58,10 @@ NeoBundle 'jalvesaq/Nvim-R'
 NeoBundle 'gaalcaras/ncm-R'
 NeoBundle 'ncm2/ncm2-jedi'
 NeoBundle 'jalvesaq/Nvim-R'
-NeoBundle 'ncm2/ncm2-ultisnips'
 NeoBundle 'Shougo/neco-syntax'
 
+NeoBundle 'junegunn/fzf', { 'do': { -> fzf#install() } }
+NeoBundle 'junegunn/fzf.vim'
 call neobundle#end()
 
 " Required:
@@ -113,16 +115,17 @@ function! ToggleDarkModeOne()
   endif
 endfunction
 
-map <F12> :call ToggleDarkModeOne()<CR>
+" Neoterm
+let g:neoterm_default_mod='aboveleft'
 
 " NERDtree
 " start NERDtree if no file was specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 highlight Directory guifg=#bbbbbb ctermfg=grey
+let NERDTreeQuitOnOpen=1
 
 " Code folding
-nnoremap <ENTER> za
 set foldmethod=marker
 set foldmarker={,}
 
@@ -184,6 +187,11 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
+set autochdir
+
+" R
+let R_assign = 0
+
 " Linting and fixing
 let g:ale_fixers = {
 	\ 'markdown': ['remove_trailing_lines', 'trim_whitespace'],
@@ -192,3 +200,41 @@ let g:ale_fixers = {
 	\}
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
+
+" Keyboard shortcuts
+map <Space> <Leader>
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>+ :tabnew<CR>:NERDTree<CR>
+map <Leader># :new<CR>
+map <Leader>- :tabclose<CR>
+map <Leader><Right> :tabn<CR>
+map <Leader><Left> :tabp<CR>
+map <Leader><Up> <C-w><Up>
+map <Leader><Down> <C-w><Down>
+map <Leader><ENTER> zi " toggle all folds
+map <ENTER> za " toggle current fold
+map <Leader>dm :call ToggleDarkModeOne()<CR>
+map <Leader>c :nohlsearch<CR>
+map <Leader>t :TREPLSendSelection<CR>
+
+
+let g:ale_linters = {
+\   'markdown': ['my-languagetool', 'echo-test'],
+\} 
+
+
+ call ale#linter#Define('markdown', {
+ \   'name': 'echo-test',
+ \   'executable': 'echo',
+ \   'command': 'echo hello world',
+ \   'callback': {buffer, lines -> map(lines, '{"text": v:val, "lnum": 1}')},
+ \})
+
+" BUG: vim ale does not find languagetool command line.
+" WORKARROUND: redefine
+ call ale#linter#Define('markdown', {
+ \   'name': 'my-languagetool',
+ \   'executable': 'bash',
+ \   'command': 'java -jar ~/opt/LanguageTool/languagetool-commandline.jar --autoDetect  /dev/stdin',
+ \   'callback': 'ale#handlers#languagetool#HandleOutput',
+ \})
