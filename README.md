@@ -37,6 +37,9 @@ sudo bash .install.sh
 	- Git: [vim-fugitive](https://github.com/tpope/vim-fugitive)
 	- Comments: [vim-commentary](https://github.com/tpope/vim-commentary)
 
+## tmux
+- Status line: [tmuxline.vim](https://github.com/edkolev/tmuxline.vim)
+
 ## git
 - My User name and email
 - Default editor: vim
