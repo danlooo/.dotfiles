@@ -29,7 +29,6 @@ NeoBundle 'kassio/neoterm'
 NeoBundle 'LukeGoodsell/nextflow-vim'
 NeoBundle 'danlooo/bioSyntax-vim'
 NeoBundle 'fidian/hexmode'
-NeoBundle 'chrisbra/csv.vim'
 
 " Misc
 NeoBundle 'jiangmiao/auto-pairs'
@@ -43,6 +42,10 @@ NeoBundle 'tpope/vim-commentary'
 " Coloring
 NeoBundle 'rakr/vim-one'
 NeoBundle 'ap/vim-css-color'
+NeoBundle 'overcache/NeoSolarized'
+NeoBundle 'sonph/onehalf', {'rtp': 'vim/'}
+NeoBundle 'jeffkreeftmeijer/vim-dim'
+NeoBundle 'ayu-theme/ayu-vim'
 
 " Frameworks
 NeoBundle 'roxma/nvim-yarp'
@@ -72,8 +75,10 @@ filetype plugin indent on
 NeoBundleCheck
 
 " color scheme
-colorscheme one
-set background=dark
+colorscheme NeoSolarized
+set background=light
+"hi Comment guifg=#abb2bf
+
 
 " Lightline
 set noshowmode
@@ -85,7 +90,7 @@ endif
 let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'colorscheme' : 'one',
+      \ 'colorscheme' : 'solarized',
       \ 'tabline': {
       \   'left': [['buffers']],
       \   'right': [[ 'exit' ]],
@@ -105,6 +110,7 @@ let g:lightline = {
       \ },
       \ }
 let g:lightline#bufferline#shorten_path = 1
+let lightline#colorscheme#background = 'light'
 
 function! ToggleDarkModeOne()
   let &background = ( &background == "dark"? "light" : "dark" )
@@ -116,7 +122,10 @@ function! ToggleDarkModeOne()
 endfunction
 
 " Neoterm
-let g:neoterm_default_mod='aboveleft'
+let g:neoterm_default_mod='vertical'
+
+" Disable spell check in terminal for proper color codings
+au TermOpen * setlocal nospell
 
 " NERDtree
 " start NERDtree if no file was specified
@@ -133,7 +142,7 @@ set foldmarker={,}
 if (has("termguicolors"))
   set termguicolors
 endif
-set number
+set number relativenumber
 set colorcolumn=80
 if !has('nvim')
     set cursorline
@@ -145,8 +154,8 @@ highlight SpellBad cterm=underline ctermfg=Red guifg=#e06c75 ctermbg=None
 highlight Folded ctermbg=None ctermfg=Grey
 highlight Pmenu ctermbg=Grey
 
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = '!'
+let g:ale_sign_error = '⭘'
+let g:ale_sign_warning = '⭘'
 
 let g:hexmode_patterns = '*.bin,*.exe,*.o'
 
@@ -154,8 +163,11 @@ set tabstop=4
 set shiftwidth=4
 
 set encoding=UTF-8
-set mouse=a
 set hlsearch
+
+set mouse=a
+" use X11 primary clipboard in neovim
+vnoremap <LeftRelease> "*ygv
 
 " spell check
 set spell
@@ -170,9 +182,10 @@ autocmd BufNewFile,BufRead *snake* set syntax=snakemake
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
-
 " set completeopt to be what ncm2 expects
 set completeopt=noinsert,menuone,noselect
+
+let R_start_libs = 'base,stats,graphics,grDevices,utils,methods,tidyverse'
 
 "Tab: Indent if we're at the beginning of a line. Else, do completion
 function! InsertTabWrapper()
@@ -187,10 +200,10 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
-set autochdir
-
 " R
 let R_assign = 0
+let R_nvim_wd = 1
+let rout_follow_colorscheme = 1
 
 " Linting and fixing
 let g:ale_fixers = {
@@ -201,22 +214,36 @@ let g:ale_fixers = {
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 
+function! SelectIndent ()
+  let temp_var=indent(line("."))
+  while indent(line(".")-1) >= temp_var
+    exe "normal k"
+  endwhile
+  exe "normal V"
+  while indent(line(".")+1) >= temp_var
+    exe "normal j"
+  endwhile
+endfun
+
 " Keyboard shortcuts
 map <Space> <Leader>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>+ :tabnew<CR>:NERDTree<CR>
 map <Leader># :new<CR>
 map <Leader>- :tabclose<CR>
-map <Leader><Right> :tabn<CR>
-map <Leader><Left> :tabp<CR>
-map <Leader><Up> <C-w><Up>
-map <Leader><Down> <C-w><Down>
 map <Leader><ENTER> zi " toggle all folds
 map <ENTER> za " toggle current fold
 map <Leader>dm :call ToggleDarkModeOne()<CR>
 map <Leader>c :nohlsearch<CR>
 map <Leader>t :TREPLSendSelection<CR>
+map <Leader>si :call SelectIndent()<CR>
+tnoremap <Esc> <C-\><C-n>
 
+"switch windows
+nmap <silent> <Leader><Up> :wincmd k<CR>
+nmap <silent> <Leader><Down> :wincmd j<CR>
+nmap <silent> <Leader><Left> :wincmd h<CR>
+nmap <silent> <leader><Right> :wincmd l<CR>
 
 let g:ale_linters = {
 \   'markdown': ['my-languagetool', 'echo-test'],

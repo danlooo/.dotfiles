@@ -1,9 +1,11 @@
 library(tidyverse)
 
 options(
-	mc.cores = 20,
-	shiny.fullstacktrace = TRUE,
-	shiny.error = browser
+  mc.cores = 20,
+  width = 120,
+  tibble.max_extra_cols = 6,
+  shiny.fullstacktrace = TRUE,
+  shiny.error = browser
 )
 
 #
@@ -29,8 +31,8 @@ theme_my <-
     panel.grid.major = ggplot2::element_blank(),
     panel.grid = element_blank(),
     panel.border = element_blank(),
-    strip.text.x = element_text(margin = margin(0,0,0,0)),
-    strip.text.y = element_text(margin = margin(0,0,0,0))
+    strip.text.x = element_text(margin = margin(0, 0, 0, 0)),
+    strip.text.y = element_text(margin = margin(0, 0, 0, 0))
   )
 ggplot2::theme_set(theme_my)
 ggplot2::update_geom_defaults("bar", base::list(fill = bg_color))

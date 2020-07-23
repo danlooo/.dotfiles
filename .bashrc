@@ -93,7 +93,7 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias ll='ls -alF -h'
+alias ll='ls -alFh'
 alias la='ls -A -h'
 alias l='ls -CF -h'
 alias r='ranger'
@@ -153,7 +153,7 @@ fi
 # start up commands
 uname -a | cut -d " " -f 1-5,12,15
 date
-tput setaf 250; fortune -n 150
+tput setaf 240; fortune -n 150
 echo ""
 
 # run other files ending with .bashrc
@@ -165,7 +165,7 @@ done
 
 trap 'echo -ne "\033]2;$(hostname):$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
 
-EDITOR="vim"
+EDITOR="nvim"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
