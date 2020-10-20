@@ -1,6 +1,6 @@
 [user]
 	name = Daniel Loos
-	email = loosdaniel@gmail.com
+	email = daniel.loos@leibniz-hki.de
 
 [core]
 	editor = vim
@@ -82,8 +82,3 @@
 
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
