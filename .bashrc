@@ -165,7 +165,7 @@ done
 
 trap 'echo -ne "\033]2;$(hostname):$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
 
-EDITOR="nvim"
+export EDITOR="nvim"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
