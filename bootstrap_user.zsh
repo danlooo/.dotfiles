@@ -23,11 +23,14 @@ wget -O ~/.local/share/fonts/MesloLGS NF Bold Italic.ttf \
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+# vim
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+
 # dotfiles
 # do as last step because ohmyzsh overwrites .zshrc
 cd $HOME
 dotfiles=$(find "$REPO_DIR/home" -type f | cut -sd / -f 6-)
-mkdir -p  ~/.config
+mkdir -p ~/.config
 echo $dotfiles | xargs -i rm -rf $HOME/{}
 # only  do soft links so one can also replace some  files locally  independed of the git repo
 echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}

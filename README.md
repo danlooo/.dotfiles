@@ -2,13 +2,20 @@
 
 This repository  is to automatically install  packages and user configuration on a new system  in [my](https://github.com/danlooo) preferred way.
 
-## Install
+## Get started
+
+Install:
 
 ```sh
 git clone  https://github.com/danlooo/dotfiles ~/.dotfiles
 sudo sh /.dotfiles/bootstrap_system.sh 
 zsh ~/.dotfiles/bootstrap_user.zsh 
 exec zsh
+```
+
+Or use docker:
+```sh
+docker run -it dotfiles
 ```
 
 ## Contribute
