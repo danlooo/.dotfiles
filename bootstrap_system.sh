@@ -9,6 +9,7 @@ apt update
 DEBIAN_FRONTEND=noninteractive apt install -y \
     curl \
     fortune \
+    htop \
     git \
     vim \
     wget \
