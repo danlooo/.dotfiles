@@ -6,12 +6,13 @@
 
 # debian packages
 apt update
-apt install -y \
+DEBIAN_FRONTEND=noninteractive apt install -y \
     curl \
     fortune \
     git \
     vim \
     wget \
+    xdg-utils \
     zsh
 
 wget https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
