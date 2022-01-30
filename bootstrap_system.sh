@@ -6,4 +6,10 @@
 
 # debian packages
 apt update
-apt install -y zsh fortune wget git curl
+apt install -y \
+    curl \
+    fortune \
+    git \
+    vim \
+    wget \
+    zsh 

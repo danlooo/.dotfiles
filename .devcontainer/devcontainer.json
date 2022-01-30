@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/ubuntu
 {
-	"name": "Ubuntu",
+	"name": "dotfiles",
 	"build": {
 		"dockerfile": "../Dockerfile",
 		"context": "..",
@@ -23,6 +23,5 @@
 	"remoteUser": "vscode",
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/.dotfiles,type=bind,consistency=cached",
 	"workspaceFolder": "/home/vscode/.dotfiles",
-	// overwrite .zshrc to use the one of the repo
 	"postCreateCommand": "zsh ~/.dotfiles/bootstrap_user.zsh"
 }

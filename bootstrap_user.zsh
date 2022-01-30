@@ -30,6 +30,6 @@ dotfiles=$(find "$REPO_DIR/home" -type f | cut -sd / -f 6-)
 mkdir -p  ~/.config
 echo $dotfiles | xargs -i rm -rf $HOME/{}
 # only  do soft links so one can also replace some  files locally  independed of the git repo
-echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} $HOME/{}
+echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}
 
 exec zsh

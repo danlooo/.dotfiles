@@ -1,11 +1,13 @@
 # .dotfiles
 
+This repository  is to automatically install  packages and user configuration on a new system  in [my](https://github.com/danlooo) preferred way.
+
 ## Install
 
 ```sh
 git clone  https://github.com/danlooo/dotfiles ~/.dotfiles
 sudo sh /.dotfiles/bootstrap_system.sh # install packages
-sh ~/.dotfiles/bootstrap_user.sh # install configs
+zsh ~/.dotfiles/bootstrap_user.zsh # install configs
 exec zsh
 ```
 
