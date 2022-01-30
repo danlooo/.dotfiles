@@ -12,4 +12,8 @@ apt install -y \
     git \
     vim \
     wget \
-    zsh 
+    zsh
+
+wget https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
+tar zxvf lf-linux-amd64.tar.gz
+mv lf /usr/local/bin
