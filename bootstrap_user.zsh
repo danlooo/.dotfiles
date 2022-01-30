@@ -35,4 +35,7 @@ echo $dotfiles | xargs -i rm -rf $HOME/{}
 # only  do soft links so one can also replace some  files locally  independed of the git repo
 echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}
 
+# additional local run control
+touch $HOME/.local.zshrc $HOME/.local.shellrc $HOME/.local.bashrc
+
 exec zsh
