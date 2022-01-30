@@ -1,8 +1,0 @@
-#  List of essential pip packages
-
-powerline-shell
-flake8
-black
-pylint
-jedi
-neovim
