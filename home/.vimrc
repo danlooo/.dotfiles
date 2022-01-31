@@ -9,6 +9,7 @@ set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'preservim/nerdtree'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
