@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+#
+# script to run at start of  all shells (like .profile but not only dfor login shells)
+#
+
+# start up commands
+uname -a | cut -d " " -f 1-5,12,15
+date
+tput setaf 240
+fortune -n 150
+echo ""
+
+export $(cat ~/.env | grep -v -E '^#' | xargs)

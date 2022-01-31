@@ -1,11 +1,6 @@
-path+=('/usr/games')
+#!/usr/bin/env zsh
 
-# start up commands
-uname -a | cut -d " " -f 1-5,12,15
-date
-tput setaf 240; fortune -n 150
-echo ""
-
+source   ~/.shellrc
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

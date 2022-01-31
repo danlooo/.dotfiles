@@ -7,7 +7,7 @@
 REPO_DIR="$HOME/.dotfiles"
 
 # Oh my zsh
-rm -rf ~/.oh-my-zsh
+rm -rf ~/.oh-my-zsh ~/.zshrc*
 curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
 
 # powerlevel10
