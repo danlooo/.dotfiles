@@ -30,8 +30,13 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 # do as last step because ohmyzsh overwrites .zshrc
 cd $HOME
 dotfiles=$(find "$REPO_DIR/home" -type f | cut -sd / -f 6-)
-mkdir -p ~/.config
+
+# create dirs if  required
+find "$REPO_DIR/home" -type d | cut -sd / -f 6- | xargs -i mkdir -p ~/{}
+
+# remove existing repo files
 echo $dotfiles | xargs -i rm -rf $HOME/{}
+
 # only  do soft links so one can also replace some  files locally  independed of the git repo
 echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}
 
