@@ -24,5 +24,5 @@ syntax on
 " use terminal colors for color scheme
 set t_Co=16
 
-let g:airline_theme='cool'
-let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
+let g:airline_powerline_fonts = 0
