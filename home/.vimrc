@@ -10,6 +10,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'preservim/nerdtree'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
@@ -21,3 +23,5 @@ syntax on
 
 " use terminal colors for color scheme
 set t_Co=16
+
+let g:airline_theme='cool'
