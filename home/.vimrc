@@ -25,3 +25,4 @@ syntax on
 set t_Co=16
 
 let g:airline_theme='cool'
+let g:airline_powerline_fonts = 1
