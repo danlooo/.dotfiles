@@ -11,4 +11,6 @@ tput setaf 240
 command -v fortune >/dev/null && fortune -n 150
 echo ""
 
+alias localhost='ssh -X $USER@localhost'
+
 export $(cat ~/.env | grep -v -E '^#' | xargs)
