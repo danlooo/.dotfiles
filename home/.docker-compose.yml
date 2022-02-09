@@ -22,5 +22,24 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`portainer.localhost`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.localhost`)"
+      - "traefik.http.routers.portainer.entrypoints=web"
+
+  rstudio:
+    image: rocker/verse
+    restart: always
+    volumes:
+      - /:/host
+      - $HOME:/home/rstudio
+      - rstudio-site-library:/usr/local/lib/R/site-library
+    environment:
+      - DISABLE_AUTH=true
+      - USER_ID=`id -u`
+      - GROUP_ID=`id -g`
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rstudio.rule=Host(`rstudio.localhost`)"
+      - "traefik.http.routers.rstudio.entrypoints=web"
+
+volumes:
+  rstudio-site-library:
