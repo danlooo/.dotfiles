@@ -43,4 +43,7 @@ echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}
 # additional local run control
 touch $HOME/.local.zshrc $HOME/.local.shellrc $HOME/.local.bashrc
 
+# start docker container
+COMPOSE_PROJECT_NAME=default docker-compose -f $HOME/.docker-compose.yml up --force-recreate --detach
+
 exec zsh
