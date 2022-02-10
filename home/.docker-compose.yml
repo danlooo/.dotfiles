@@ -34,8 +34,8 @@ services:
       - rstudio-site-library:/usr/local/lib/R/site-library
     environment:
       - DISABLE_AUTH=true
-      - USER_ID=`id -u`
-      - GROUP_ID=`id -g`
+      - USERID=${UID}
+      - GROUPID=${GID}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.rstudio.rule=Host(`rstudio.localhost`)"

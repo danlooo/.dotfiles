@@ -44,6 +44,6 @@ echo $dotfiles | xargs -i ln -s $REPO_DIR/home/{} {}
 touch $HOME/.local.zshrc $HOME/.local.shellrc $HOME/.local.bashrc
 
 # start docker container
-COMPOSE_PROJECT_NAME=default docker-compose -f $HOME/.docker-compose.yml up --detach
+COMPOSE_PROJECT_NAME=main GID=$GID UID=$UID docker-compose -f $HOME/.docker-compose.yml up --detach
 
 exec zsh
