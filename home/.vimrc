@@ -19,7 +19,7 @@ NeoBundleCheck
 " do not copy line numbers
 set mouse+=a 
 
-set number
+set number relativenumber
 set shiftwidth=4
 set softtabstop=4
 syntax on
