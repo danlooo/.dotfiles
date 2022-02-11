@@ -3,6 +3,7 @@ services:
   traefik:
     image: traefik
     restart: always
+    network_mode: "host"
     ports:
       - "80:80"
       - "443:443"
@@ -12,7 +13,8 @@ services:
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.exposedbydefault=true"
+      - "--providers.docker.defaultrule=Host(`{{ normalize .Name }}.localhost`)"
       - "--entrypoints.web.address=:80"
 
   portainer:
