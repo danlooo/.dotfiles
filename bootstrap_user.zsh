@@ -46,4 +46,7 @@ touch $HOME/.local.zshrc $HOME/.local.shellrc $HOME/.local.bashrc
 # start docker container
 COMPOSE_PROJECT_NAME=main GID=$GID UID=$UID docker-compose -f $HOME/.docker-compose.yml up --detach
 
+# gsettings
+gsettings set org.gnome.nautilus.preferences always-use-location-entry true
+
 exec zsh
