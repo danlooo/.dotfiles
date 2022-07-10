@@ -1,5 +1,8 @@
-# interpreter for shell commands (needs to be POSIX compatible)
+
 set shell sh
+set ignorecase true
+set icons true
+set colors true
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
@@ -101,3 +104,5 @@ map . set hidden!
 
 # Open shell here
 map S $$SHELL
+
+set previewer '~/.config/lf/scope'
