@@ -43,6 +43,16 @@ services:
             - "traefik.enable=true"
             - "traefik.http.routers.rstudio.rule=Host(`rstudio.localhost`)"
             - "traefik.http.routers.rstudio.entrypoints=web"
+    
+    jupyter_lab:
+        image: jupyter/datascience-notebook
+        restart: always
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.rstudio.rule=Host(`jupyter.localhost`)"
+            - "traefik.http.routers.rstudio.entrypoints=web"
+
+
 
 volumes:
     rstudio-site-library:
