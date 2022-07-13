@@ -4,6 +4,7 @@
 alias b='bash'
 alias c='code'
 alias d='docker'
+alias e='exit'
 alias g='git'
 alias m='make'
 alias s='sh'

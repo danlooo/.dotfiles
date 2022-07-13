@@ -7,15 +7,12 @@ This repository  is to automatically install  packages and user configuration on
 Install:
 
 ```sh
-git clone  https://github.com/danlooo/dotfiles ~/.dotfiles
-sudo sh /.dotfiles/bootstrap_system.sh 
-zsh ~/.dotfiles/bootstrap_user.zsh 
+cd
+git clone  https://github.com/danlooo/.dotfiles
+cd .dotfiles
+sudo sh bootstrap_system.sh 
+zsh bootstrap_user.zsh 
 exec zsh
-```
-
-Or use docker:
-```sh
-docker run -it dotfiles
 ```
 
 ## Contribute
