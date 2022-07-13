@@ -4,13 +4,13 @@
 # script to run at start of  all shells (like .profile but not only dfor login shells)
 #
 
+source ~/.env
+
 # start up commands
 uname -a | cut -d " " -f 1-5,12,15
 date
+
+export TERM=linux
 tput setaf 240
 command -v fortune >/dev/null && fortune -n 150
 echo ""
-
-alias localhost='ssh -X $USER@localhost'
-
-export $(cat ~/.env | grep -v -E '^#' | xargs)

@@ -1,14 +1,25 @@
 #!/usr/bin/env sh
 
-alias m='make'
-alias v='vim'
+# most used tools
+alias b='bash'
 alias c='code'
 alias d='docker'
+alias g='git'
+alias m='make'
+alias s='sh'
+alias v='vim'
+alias z='zsh'
+
 alias o='xdg-open'
 alias open='xdg-open'
-alias g='git'
+
 alias l='ls --color=tty'
 alias ll='ls -lah --color=tty'
-# error: bash: alias: =xdg-open: not found
-#alias open ='xdg-open'
-#alias o='xdg-open'
+
+alias p='python'
+alias p3='python3'
+alias ip='ipython'
+alias ip3='ipython3'
+
+# remote servers
+alias localhost='ssh -X $USER@localhost'
