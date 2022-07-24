@@ -112,6 +112,10 @@ source ~/.aliases.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
 # additional local run control
 # must be executed in same shell to  make variales in this shell available
 source <(ls -a $HOME | grep -E '(shell|zsh)rc$' | grep -v -E '^.(zsh|shell)rc$' | xargs -i  cat $HOME/{})
