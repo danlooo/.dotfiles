@@ -5,6 +5,9 @@ if &compatible
     set nocompatible   " Be iMproved
 endif
 
+set term=xterm-256color
+
+" Plugins
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -16,8 +19,8 @@ call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
 
-" do not copy line numbers
-set mouse+=a 
+" mouse copy
+set mouse+=a
 
 set number relativenumber
 set shiftwidth=4
