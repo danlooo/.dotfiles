@@ -1,8 +1,8 @@
 
 set shell sh
 set ignorecase true
-set icons true
-set colors true
+unset icons
+set colors
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
@@ -20,6 +20,16 @@ set shellopts '-eu'
 # commands accordingly.
 set ifs "\n"
 
+cmap <up>    up
+cmap <down>  down
+cmap <left>  updir
+cmap <right> open
+
+map <esc>    quit
+
+set shell zsh
+map <enter> shell-pipe
+
 # leave some space at the top and the bottom of the screen
 set scrolloff 10
 
@@ -29,7 +39,6 @@ map X !$f
 
 # dedicated keys for file opener actions
 map o &mimeopen $f
-map <enter> open
 map O $mimeopen --ask $f
 
 # define a custom 'open' command
@@ -104,5 +113,3 @@ map . set hidden!
 
 # Open shell here
 map S $$SHELL
-
-set previewer '~/.config/lf/scope'
