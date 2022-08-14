@@ -8,9 +8,10 @@
 apt update
 DEBIAN_FRONTEND=noninteractive apt install -y \
     curl \
+    direnv \
     fortune \
-    htop \
     git \
+    htop \
     vim \
     wget \
     xdg-utils \
