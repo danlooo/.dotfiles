@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 
-source   ~/.shellrc
+source ~/.shellrc
+test -f ~/.local.shellrc && source ~/.local.shellrc
+test -f ~/.local.zshrc && source ~/.local.zshrc
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -115,7 +117,3 @@ source ~/.aliases.sh
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
-
-# additional local run control
-# must be executed in same shell to  make variales in this shell available
-source <(ls -a $HOME | grep -E '(shell|zsh)rc$' | grep -v -E '^.(zsh|shell)rc$' | xargs -i  cat $HOME/{})
