@@ -1,6 +1,7 @@
 [user]
 	name = danlooo
 	email = loosdaniel@gmail.com
+	signingkey = 82FA1169AB68813E7EA665C3241E64617499C453
 
 [core]
 	editor = vim
@@ -93,3 +94,5 @@
 	tool = meld
 [credential]
 	helper = cache
+[commit]
+	gpgsign = true
