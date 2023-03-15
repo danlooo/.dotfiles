@@ -12,13 +12,13 @@ curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh |
 
 # powerlevel10
 mkdir -p ~/.local/share/fonts
-wget -O ~/.local/share/fonts/MesloLGS NF Regular.ttf \
+wget -O ~/.local/share/fonts/MesloLGS\ NF\ Regular.ttf \
     https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-wget -O ~/.local/share/fonts/MesloLGS NF Bold.ttf \
+wget -O ~/.local/share/fonts/MesloLGS\ NF\ Bold.ttf \
     https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
-wget -O ~/.local/share/fonts/MesloLGS NF Italic.ttf \
+wget -O ~/.local/share/fonts/MesloLGS\ NF\ Italic.ttf \
     https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
-wget -O ~/.local/share/fonts/MesloLGS NF Bold Italic.ttf \
+wget -O ~/.local/share/fonts/MesloLGS\ NF\ Bold Italic.ttf \
     https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
