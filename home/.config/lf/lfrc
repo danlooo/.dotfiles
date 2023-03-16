@@ -1,8 +1,6 @@
 
 set shell sh
 set ignorecase true
-unset icons
-set colors
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
