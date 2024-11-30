@@ -19,7 +19,6 @@ alias ll='ls -lah --color=tty'
 
 alias p='python'
 alias p3='python3'
-alias ip='ipython'
 alias ip3='ipython3'
 
 # remote servers
