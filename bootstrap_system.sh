@@ -15,7 +15,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
     vim \
     wget \
     xdg-utils \
-    zsh
+    zsh \
+    rclone
 
 wget https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
 tar zxvf lf-linux-amd64.tar.gz
